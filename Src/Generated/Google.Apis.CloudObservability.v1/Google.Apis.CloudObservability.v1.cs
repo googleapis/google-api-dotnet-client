@@ -1540,6 +1540,7 @@ namespace Google.Apis.CloudObservability.v1
                 this.service = service;
                 Buckets = new BucketsResource(service);
                 Operations = new OperationsResource(service);
+                Reports = new ReportsResource(service);
                 Scopes = new ScopesResource(service);
                 TraceScopes = new TraceScopesResource(service);
             }
@@ -2868,6 +2869,414 @@ namespace Google.Apis.CloudObservability.v1
                 }
             }
 
+            /// <summary>Gets the Reports resource.</summary>
+            public virtual ReportsResource Reports { get; }
+
+            /// <summary>The "reports" collection of methods.</summary>
+            public class ReportsResource
+            {
+                private const string Resource = "reports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a Report.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The full resource name of the location where the report should be created
+                /// projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/locations/global
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudObservability.v1.Data.Report body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a Report.</summary>
+                public class CreateRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudObservability.v1.Data.Report body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The full resource name of the location where the report should be created
+                    /// projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/locations/global
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. A client-assigned identifier for the report. The maximum length is 63 characters.
+                    /// Valid characters are `a-zA-Z0-9-._~%!$&amp;amp;'()*+,;=@`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("reportId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ReportId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudObservability.v1.Data.Report Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reports";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("reportId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "reportId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Report resource.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the report to delete. Format:
+                /// projects/{project}/locations/{location}/reports/{REPORT_ID}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a Report resource.</summary>
+                public class DeleteRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the report to delete. Format:
+                    /// projects/{project}/locations/{location}/reports/{REPORT_ID}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reports/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Report Endpoints Gets a Report resource.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the report to retrieve. Format:
+                /// projects/{project}/locations/{location}/reports/{REPORT_ID}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Report Endpoints Gets a Report resource.</summary>
+                public class GetRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.Report>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the report to retrieve. Format:
+                    /// projects/{project}/locations/{location}/reports/{REPORT_ID}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reports/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Report resources</summary>
+                /// <param name="parent">
+                /// Required. The scope of reports to list Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Report resources</summary>
+                public class ListRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.ListReportsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The scope of reports to list Format: projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return from this request. Note that the server may
+                    /// return fewer reports than requested. If unspecified, the server will pick an appropriate
+                    /// default. The maximum value is 100; values above 100 will be coerced to 100. If not provided, the
+                    /// default page size is 10.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListReports` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListReports` must match
+                    /// the call that provided the page token (except `page_size`, which may differ).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reports";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a Report resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the report. Format:
+                /// projects/{project}/locations/{location}/reports/{report}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudObservability.v1.Data.Report body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a Report resource.</summary>
+                public class PatchRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudObservability.v1.Data.Report body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the report. Format:
+                    /// projects/{project}/locations/{location}/reports/{report}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The field mask specifying which fields of the report are to be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudObservability.v1.Data.Report Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reports/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Sends a Report resource via email.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the report to send. Format:
+                /// projects/{project}/locations/{location}/reports/{REPORT_ID}
+                /// </param>
+                public virtual SendRequest Send(Google.Apis.CloudObservability.v1.Data.SendReportRequest body, string name)
+                {
+                    return new SendRequest(this.service, body, name);
+                }
+
+                /// <summary>Sends a Report resource via email.</summary>
+                public class SendRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Send request.</summary>
+                    public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudObservability.v1.Data.SendReportRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the report to send. Format:
+                    /// projects/{project}/locations/{location}/reports/{REPORT_ID}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudObservability.v1.Data.SendReportRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "send";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:send";
+
+                    /// <summary>Initializes Send parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reports/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Scopes resource.</summary>
             public virtual ScopesResource Scopes { get; }
 
@@ -4168,6 +4577,24 @@ namespace Google.Apis.CloudObservability.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for listing Reports.</summary>
+    public class ListReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reports")]
+        public virtual System.Collections.Generic.IList<Report> Reports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for listing TraceScopes.</summary>
     public class ListTraceScopesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4385,6 +4812,214 @@ namespace Google.Apis.CloudObservability.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rendering options for the report.</summary>
+    public class RenderingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether widgets within a collapsible group are expanded by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsibleGroupsExpanded")]
+        public virtual System.Nullable<bool> CollapsibleGroupsExpanded { get; set; }
+
+        /// <summary>Optional. Whether legends are included on widgets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legendsIncluded")]
+        public virtual System.Nullable<bool> LegendsIncluded { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Cloud Observability report configuration.</summary>
+    public class Report : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the report was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The username of the user who created the report. This may be an email or a formatted subject
+        /// and identity pool identifier. The following are examples: alice.smith@example.com alice.smith@example.com
+        /// (global/workforcePools/example-com-us-employees) my-workload
+        /// (projects/1234/locations/global/workloadIdentityPools/example-workload-pool) This value may be empty if the
+        /// creating user was deleted, or if the username is otherwise unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorUsername")]
+        public virtual string CreatorUsername { get; set; }
+
+        /// <summary>
+        /// Required. The dashboard to render in the report. Note that dashboards are snapshotted on report creation, so
+        /// changes to the dashboard after report creation will not be reflected in the report. For example:
+        /// //monitoring.googleapis.com/projects/my-project/dashboards/my-dashboard
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashboard")]
+        public virtual string Dashboard { get; set; }
+
+        /// <summary>
+        /// Optional. A description of the report. Useful for documenting how the report is intended to be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The human readable name of the report. The maximum length is 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
+        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        private string _latestRunTimeRaw;
+
+        private object _latestRunTime;
+
+        /// <summary>Output only. When the report was last successfully run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestRunTime")]
+        public virtual string LatestRunTimeRaw
+        {
+            get => _latestRunTimeRaw;
+            set
+            {
+                _latestRunTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestRunTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestRunTimeDateTimeOffset instead.")]
+        public virtual object LatestRunTime
+        {
+            get => _latestRunTime;
+            set
+            {
+                _latestRunTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestRunTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestRunTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestRunTimeRaw);
+            set => LatestRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The resource name of the report. Format:
+        /// projects/{project}/locations/{location}/reports/{report}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The list of email addresses to receive the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipientEmails")]
+        public virtual System.Collections.Generic.IList<string> RecipientEmails { get; set; }
+
+        /// <summary>Optional. Rendering options for the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderingOptions")]
+        public virtual RenderingOptions RenderingOptions { get; set; }
+
+        /// <summary>Optional. The type of the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportType")]
+        public virtual string ReportType { get; set; }
+
+        /// <summary>
+        /// Optional. The associated cloud scheduling job, if this is a scheduled report. For example:
+        /// cloudscheduler.googleapis.com/projects/my-project/locations/global/jobs/my-job
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingJob")]
+        public virtual string SchedulingJob { get; set; }
+
+        /// <summary>
+        /// Optional. The time window of the report data, ending at the time the report is generated. If not specified,
+        /// defaults to the last 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeWindow")]
+        public virtual object TimeWindow { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the report was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The username of the user who updated the report. This may be an email or a formatted subject
+        /// and identity pool identifier. The following are examples: alice.smith@example.com alice.smith@example.com
+        /// (global/workforcePools/example-com-us-employees) my-workload
+        /// (projects/1234/locations/global/workloadIdentityPools/example-workload-pool) This value may be empty if the
+        /// updating user was deleted, or if the username is otherwise unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updaterUsername")]
+        public virtual string UpdaterUsername { get; set; }
+    }
+
     /// <summary>
     /// Request for reprovisioning a bucket, replaces configuration with that of the configured Observability settings.
     /// </summary>
@@ -4457,6 +5092,13 @@ namespace Google.Apis.CloudObservability.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for sending a Report via email.</summary>
+    public class SendReportRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
