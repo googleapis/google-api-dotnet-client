@@ -462,7 +462,8 @@ public static class CredentialFactory
         };
 
         var impersonatedCredential = ImpersonatedCredential.Create(sourceCredential.ToGoogleCredential(), initializer);
-        if (parameters.UniverseDomain != parameters.SourceCredential.UniverseDomain)
+        if (!string.IsNullOrWhiteSpace(parameters.UniverseDomain)
+            && parameters.UniverseDomain != sourceCredential.GetUniverseDomain())
         {
             return (impersonatedCredential as IGoogleCredential).WithUniverseDomain(parameters.UniverseDomain) as ImpersonatedCredential;
         }
