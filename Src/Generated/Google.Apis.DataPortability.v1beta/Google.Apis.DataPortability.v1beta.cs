@@ -165,9 +165,6 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Copy your Nest user information</summary>
             public static string DataportabilityNestUser = "https://www.googleapis.com/auth/dataportability.nest.user";
 
-            /// <summary>Move a copy of your food purchase and reservation activity</summary>
-            public static string DataportabilityOrderReservePurchasesReservations = "https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations";
-
             /// <summary>Usage and diagnostic data from your Pixel devices.</summary>
             public static string DataportabilityPixelDeviceData = "https://www.googleapis.com/auth/dataportability.pixel.device_data";
 
@@ -396,9 +393,6 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Copy your Nest user information</summary>
             public const string DataportabilityNestUser = "https://www.googleapis.com/auth/dataportability.nest.user";
-
-            /// <summary>Move a copy of your food purchase and reservation activity</summary>
-            public const string DataportabilityOrderReservePurchasesReservations = "https://www.googleapis.com/auth/dataportability.order_reserve.purchases_reservations";
 
             /// <summary>Usage and diagnostic data from your Pixel devices.</summary>
             public const string DataportabilityPixelDeviceData = "https://www.googleapis.com/auth/dataportability.pixel.device_data";
