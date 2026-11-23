@@ -161,7 +161,7 @@
       }
     }
   },
-  "revision": "20261116",
+  "revision": "20261117",
   "rootUrl": "https://travelimpactmodel.googleapis.com/",
   "schemas": {
     "ComputeDetailedFlightEmissionsRequest": {
@@ -923,16 +923,16 @@
       "type": "object"
     },
     "Status": {
-      "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+      "description": "Represents an error encountered while processing an individual flight or market in a request. When emission estimates cannot be computed for a requested item, the `errors` field contains one or more `Status` objects describing why: * `INVALID_ARGUMENT` (`code` `3`): Reports input errors on the requested item, such as missing or invalid airport codes, operating carrier codes, flight numbers, or departure dates. Multiple `Status` entries may be returned if multiple input fields are invalid. * `NOT_FOUND` (`code` `5`): Indicates that no emission estimates matched the requested flight or market inputs.",
       "id": "Status",
       "properties": {
         "code": {
-          "description": "The status code, which should be an enum value of google.rpc.Code.",
+          "description": "The numeric status code corresponding to a `google.rpc.Code` enum value: * `3` (`INVALID_ARGUMENT`): Input error (for example, a missing or invalid airport or carrier code). * `5` (`NOT_FOUND`): No emission estimates matched the requested inputs.",
           "format": "int32",
           "type": "integer"
         },
         "details": {
-          "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+          "description": "Additional structured error details, when available.",
           "items": {
             "additionalProperties": {
               "description": "Properties of the object. Contains field @type with type URL.",
@@ -943,7 +943,7 @@
           "type": "array"
         },
         "message": {
-          "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+          "description": "A human-readable error message in English describing why emission estimates could not be returned for the requested item.",
           "type": "string"
         }
       },
