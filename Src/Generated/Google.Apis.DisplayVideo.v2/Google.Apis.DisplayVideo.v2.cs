@@ -20494,6 +20494,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Output only. The exclusion status of the category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionStatus")]
+        public virtual string ExclusionStatus { get; set; }
+
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
@@ -20515,6 +20519,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>Output only. The display name of the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The exclusion status of the category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionStatus")]
+        public virtual string ExclusionStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26579,8 +26587,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Collections.Generic.IList<string> ActionButtonLabels { get; set; }
 
         /// <summary>
-        /// Optional. The business name shown on the ad. This setting is required unless a default value is set at the
-        /// advertiser level. If left unset, the default value will be applied.
+        /// Optional. The business name shown on the ad. This setting is required unless defaultBusinessName is set for
+        /// the parent advertiser. If this field is unset, the advertiser's default business name is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
@@ -26625,8 +26633,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
         /// <summary>
-        /// Optional. The logo image used by this ad. This setting is required unless a default value is set at the
-        /// advertiser level. If left unset, the default value will be applied.
+        /// Optional. The logo image used by this ad. This setting is required unless defaultLogoAssetId is set for the
+        /// parent advertiser. If this field is unset, the advertiser's default logo asset is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
