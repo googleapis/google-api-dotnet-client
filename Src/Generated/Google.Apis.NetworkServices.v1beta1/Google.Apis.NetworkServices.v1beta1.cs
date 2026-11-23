@@ -14774,12 +14774,42 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         }
     }
 
+    /// <summary>
+    /// Specifies how the `ProducerExtension` acts on events. This information is required to parallelize the execution
+    /// of `ProducerExtension` resources.
+    /// </summary>
+    public class ProducerExtensionExtensionBehavior : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies how the `ProducerExtension` acts on the request body event. This can be used to
+        /// determine whether the `ProducerExtension` can run in parallel with other extensions in the request
+        /// direction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestBodyAction")]
+        public virtual string RequestBodyAction { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies how the `ProducerExtension` acts on the response body event. This can be used to
+        /// determine whether the `ProducerExtension` can run in parallel with other extensions in the response
+        /// direction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseBodyAction")]
+        public virtual string ResponseBodyAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration for the service that this `ProducerExtension` offers.</summary>
     public class ProducerExtensionExtensionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The `:authority` header in the request sent to the extension service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
+
+        /// <summary>Optional. Specifies how the extension is expected to act on events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionBehavior")]
+        public virtual ProducerExtensionExtensionBehavior ExtensionBehavior { get; set; }
 
         /// <summary>Optional. This field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMode")]
