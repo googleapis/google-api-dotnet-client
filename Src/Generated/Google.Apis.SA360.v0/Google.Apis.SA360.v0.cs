@@ -572,9 +572,9 @@ namespace Google.Apis.SA360.v0
 
         /// <summary>
         /// Returns all fields that match the search
-        /// [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown
-        /// errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]()
-        /// [QuotaError]() [RequestError]()
+        /// [query](https://developers.google.com/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details).
+        /// List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]()
+        /// [QueryError]() [QuotaError]() [RequestError]()
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360FieldsRequest body)
@@ -584,9 +584,9 @@ namespace Google.Apis.SA360.v0
 
         /// <summary>
         /// Returns all fields that match the search
-        /// [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown
-        /// errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]()
-        /// [QuotaError]() [RequestError]()
+        /// [query](https://developers.google.com/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details).
+        /// List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]()
+        /// [QueryError]() [QuotaError]() [RequestError]()
         /// </summary>
         public class SearchRequest : SA360BaseServiceRequest<Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360FieldsResponse>
         {
@@ -2430,6 +2430,19 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string VerticalAdsListingRegion { get; set; }
 
         /// <summary>
+        /// Integer value specifying the user rating of the vertical ads listing as a number from 1 to 5, where 5 is the
+        /// best. The value will always be within this range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListingUserRating")]
+        public virtual System.Nullable<long> VerticalAdsListingUserRating { get; set; }
+
+        /// <summary>
+        /// The name of the venue for the vertical ads listing, for example, the venue for a concert event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAdsListingVenue")]
+        public virtual string VerticalAdsListingVenue { get; set; }
+
+        /// <summary>
         /// A specific partner account within a Partner Center (for example, Hotel Center) that supplies inventory feed
         /// data for Vertical Ads.
         /// </summary>
@@ -2464,7 +2477,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
-        /// <summary>Indicates whether the content is considered synthetic by this source.</summary>
+        /// <summary>
+        /// Indicates the attestation status for whether the content should be labeled as created or edited with AI by
+        /// this source.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -4529,6 +4545,13 @@ namespace Google.Apis.SA360.v0.Data
     public class GoogleAdsSearchads360V0ResourcesBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Immutable. Whether Google Ads auction-time bidding is enabled for this bidding strategy. This field does not
+        /// cover Microsoft Advertising auction-time bidding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auctionTimeBiddingEnabled")]
+        public virtual System.Nullable<bool> AuctionTimeBiddingEnabled { get; set; }
+
+        /// <summary>
         /// Output only. The number of campaigns attached to this bidding strategy. This field is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignCount")]
@@ -4590,6 +4613,13 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonRemovedCampaignCount")]
         public virtual System.Nullable<long> NonRemovedCampaignCount { get; set; }
+
+        /// <summary>
+        /// Immutable. Whether this bidding strategy is a Search Ads 360 portfolio group. A portfolio group is the
+        /// parent strategy of a multi-target portfolio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portfolioGroupEnabled")]
+        public virtual System.Nullable<bool> PortfolioGroupEnabled { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the bidding strategy. Bidding strategy resource names have the form:
@@ -5303,7 +5333,8 @@ namespace Google.Apis.SA360.v0.Data
         /// Feed label of products to include in the campaign. Valid feed labels may contain a maximum of 20 characters
         /// including uppercase letters, numbers, hyphens, and underscores. If you previously used the deprecated
         /// `sales_country` in the two-letter country code (`XX`) format, the `feed_label` field should be used instead.
-        /// For more information see the [feed label](//support.google.com/merchants/answer/12453549) support article.
+        /// For more information see the [feed label](https://support.google.com/merchants/answer/12453549) support
+        /// article.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
@@ -6540,6 +6571,26 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Search Ads 360 settings for a bidding strategy.</summary>
+    public class GoogleAdsSearchads360V0ResourcesSearchAds360BiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the portfolio group bidding strategy that this sub-strategy belongs to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portfolioGroupBiddingStrategy")]
+        public virtual string PortfolioGroupBiddingStrategy { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the Search Ads 360 bidding strategy. Search Ads 360 bidding strategy
+        /// resource names have the form: `customers/{customer_id}/searchAds360BiddingStrategies/{bidding_strategy_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A field or resource (artifact) used by SearchAds360Service.</summary>
     public class GoogleAdsSearchads360V0ResourcesSearchAds360Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7125,6 +7176,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The product group view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productGroupView")]
         public virtual GoogleAdsSearchads360V0ResourcesProductGroupView ProductGroupView { get; set; }
+
+        /// <summary>The Search Ads 360 bidding strategy referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAds360BiddingStrategy")]
+        public virtual GoogleAdsSearchads360V0ResourcesSearchAds360BiddingStrategy SearchAds360BiddingStrategy { get; set; }
 
         /// <summary>The segments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
