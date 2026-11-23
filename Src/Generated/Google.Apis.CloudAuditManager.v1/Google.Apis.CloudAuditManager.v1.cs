@@ -4610,6 +4610,10 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
 
+        /// <summary>Output only. Additional formats in which the audit report was requested to be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportExportFormats")]
+        public virtual System.Collections.Generic.IList<string> ReportExportFormats { get; set; }
+
         /// <summary>Output only. State of audit report generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportGenerationState")]
         public virtual string ReportGenerationState { get; set; }
@@ -4795,6 +4799,13 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, ParameterOverrides> ParameterOverrides { get; set; }
+
+        /// <summary>
+        /// Optional. Formats in which to export each scheduled audit report, in addition to the ODF report. Each format
+        /// can be listed only once.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportExportFormats")]
+        public virtual System.Collections.Generic.IList<string> ReportExportFormats { get; set; }
 
         /// <summary>Required. Format for the audit report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportFormat")]
@@ -5097,6 +5108,13 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, ParameterOverrides> ParameterOverrides { get; set; }
+
+        /// <summary>
+        /// Optional. Formats in which to export the audit report, in addition to the ODF report. Each format can be
+        /// listed only once.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportExportFormats")]
+        public virtual System.Collections.Generic.IList<string> ReportExportFormats { get; set; }
 
         /// <summary>Required. Format for the audit report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportFormat")]
