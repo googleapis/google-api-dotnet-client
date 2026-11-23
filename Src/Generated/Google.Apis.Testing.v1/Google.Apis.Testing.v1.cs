@@ -1196,6 +1196,16 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string AppPackageId { get; set; }
 
         /// <summary>
+        /// Optional. Whether to use Private Compute Core (PCC) sandbox testing. For self-instrumenting test APKs, the
+        /// test process runs directly inside the PCC sandbox. For separate test and application APKs, the PCC sandbox
+        /// is configured to allow the application's PCC components to run and accept connections from the test process.
+        /// Effective only on Android 17 (API level 37) and higher, ignored otherwise. Cannot be combined with
+        /// `OrchestratorOption.USE_ORCHESTRATOR`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instrumentInPrivateComputeCore")]
+        public virtual System.Nullable<bool> InstrumentInPrivateComputeCore { get; set; }
+
+        /// <summary>
         /// The option of whether running each test within its own invocation of instrumentation with Android Test
         /// Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.1 or higher! **
         /// Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per
