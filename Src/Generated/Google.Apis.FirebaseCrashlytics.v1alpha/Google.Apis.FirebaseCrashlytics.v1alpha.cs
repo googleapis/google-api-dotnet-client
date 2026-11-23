@@ -774,18 +774,26 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     public virtual Google.Apis.Util.Repeatable<string> FilterVersionDisplayNames { get; set; }
 
                     /// <summary>
-                    /// Optional. Filters events by custom keys
+                    /// Optional. Filters events by `crashlytics_session_id` and/or `custom_keys`
                     /// (https://firebase.google.com/docs/crashlytics/customize-crash-reports#add-keys). Supported
-                    /// forms: * Equality: `custom_keys.level = "vip"` * Has: `custom_keys.level:"vip"` (matches the
-                    /// same events as equality) * Presence: `custom_keys.level:*` * OR across values of one key:
-                    /// `custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND across different keys:
-                    /// `custom_keys.level = "vip" AND custom_keys.region = "us"` Keys are case-sensitive. Keys and
-                    /// values containing spaces must be double-quoted, for example `custom_keys."app state" =
-                    /// "background"`. OR across different keys, repeating a key within an AND, NOT, and comparators
+                    /// fields and forms: * `crashlytics_session_id` (mobile apps only; matches
+                    /// Event.crashlytics_session_id): * Equality: `crashlytics_session_id = "abc"` * Has:
+                    /// `crashlytics_session_id:"abc"` (matches the same events as equality) * OR across session IDs:
+                    /// `crashlytics_session_id = "abc" OR crashlytics_session_id = "def"` * `custom_keys.` (matches
+                    /// Event.custom_keys): * Equality: `custom_keys.level = "vip"` * Has: `custom_keys.level:"vip"`
+                    /// (matches the same events as equality) * Presence: `custom_keys.level:*` * OR across values of
+                    /// one key: `custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND across different
+                    /// fields or custom keys: * `(crashlytics_session_id = "abc" OR crashlytics_session_id = "def") AND
+                    /// custom_keys.level = "vip"` * `custom_keys.level = "vip" AND custom_keys.region = "us"` Filtering
+                    /// by `crashlytics_session_id` is supported only for mobile apps; requests for web apps that
+                    /// specify `crashlytics_session_id` are rejected with INVALID_ARGUMENT. Custom keys and values are
+                    /// case-sensitive. Keys and values containing spaces must be double-quoted, for example
+                    /// `custom_keys."app state" = "background"`. Empty `crashlytics_session_id` values, OR across
+                    /// different fields or keys, repeating the same field or key within an AND, NOT, and comparators
                     /// other than `=` and `:` are rejected with INVALID_ARGUMENT. Wildcards are not supported in
-                    /// values; use `custom_keys.:*` to match events that set a key to any value. This filter expression
-                    /// applies in addition to the `filter` field above. The syntax is a subset of AIP-160
-                    /// (https://google.aip.dev/160).
+                    /// values; for custom keys, use `custom_keys.:*` to match events that set a key to any value. This
+                    /// filter expression applies in addition to the `filter` field above. The syntax is a subset of
+                    /// AIP-160 (https://google.aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FilterExpression { get; set; }
@@ -2753,6 +2761,10 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crashlyticsSdkVersion")]
         public virtual string CrashlyticsSdkVersion { get; set; }
 
+        /// <summary>Output only. Mobile only. Unique identifier for the Crashlytics device session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crashlyticsSessionId")]
+        public virtual string CrashlyticsSessionId { get; set; }
+
         /// <summary>Custom keys set by the developer during the session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customKeys")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomKeys { get; set; }
@@ -3113,7 +3125,21 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alertType")]
         public virtual string AlertType { get; set; }
 
-        /// <summary>Optional. Language to use for the alert policy. Defaults to USER_PREFERENCE.</summary>
+        /// <summary>
+        /// Optional. Channel format to generate the alert policy for, which determines both the template format and
+        /// language. `EMAIL` always uses the requester's language preference with a rich HTML template, and
+        /// `INTEGRATION` always uses en-US with a concise Markdown template. Defaults to EMAIL behavior when
+        /// unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelFormat")]
+        public virtual string ChannelFormat { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Prefer `channel_format`, which determines both the template format and language
+        /// (`EMAIL` always uses the requester's language preference with a rich HTML template, and `INTEGRATION` always
+        /// uses en-US with a concise Markdown template). Optional. Language to use for the alert policy. Defaults to
+        /// USER_PREFERENCE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
