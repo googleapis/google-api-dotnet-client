@@ -4659,6 +4659,65 @@ namespace Google.Apis.AgentRegistry.v1
             }
 
             /// <summary>
+            /// ========================================================================= # Skill Encryption Spec
+            /// Service Methods Gets the customer-managed encryption key (CMEK) configuration for Skills in a specific
+            /// project and location.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the SkillEncryptionSpec to retrieve. Format:
+            /// `projects/{project}/locations/{location}/skillEncryptionSpec`.
+            /// </param>
+            public virtual GetSkillEncryptionSpecRequest GetSkillEncryptionSpec(string name)
+            {
+                return new GetSkillEncryptionSpecRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// ========================================================================= # Skill Encryption Spec
+            /// Service Methods Gets the customer-managed encryption key (CMEK) configuration for Skills in a specific
+            /// project and location.
+            /// </summary>
+            public class GetSkillEncryptionSpecRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.SkillEncryptionSpec>
+            {
+                /// <summary>Constructs a new GetSkillEncryptionSpec request.</summary>
+                public GetSkillEncryptionSpecRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the SkillEncryptionSpec to retrieve. Format:
+                /// `projects/{project}/locations/{location}/skillEncryptionSpec`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSkillEncryptionSpec";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetSkillEncryptionSpec parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/skillEncryptionSpec$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Lists information about the supported locations for this service. This method lists locations based on
             /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
             /// empty, the method lists the public locations available to all projects. * **Project-specific
@@ -4772,6 +4831,90 @@ namespace Google.Apis.AgentRegistry.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the customer-managed encryption key (CMEK) configuration for Skills in a specific project and
+            /// location. This method is only allowed when no Skills exist in the target project and location. If any
+            /// Skill already exists in the location, the request fails with `FAILED_PRECONDITION`.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. Resource name of the SkillEncryptionSpec. Format:
+            /// `projects/{project}/locations/{location}/skillEncryptionSpec`
+            /// </param>
+            public virtual UpdateSkillEncryptionSpecRequest UpdateSkillEncryptionSpec(Google.Apis.AgentRegistry.v1.Data.SkillEncryptionSpec body, string name)
+            {
+                return new UpdateSkillEncryptionSpecRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the customer-managed encryption key (CMEK) configuration for Skills in a specific project and
+            /// location. This method is only allowed when no Skills exist in the target project and location. If any
+            /// Skill already exists in the location, the request fails with `FAILED_PRECONDITION`.
+            /// </summary>
+            public class UpdateSkillEncryptionSpecRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new UpdateSkillEncryptionSpec request.</summary>
+                public UpdateSkillEncryptionSpecRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentRegistry.v1.Data.SkillEncryptionSpec body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. Resource name of the SkillEncryptionSpec. Format:
+                /// `projects/{project}/locations/{location}/skillEncryptionSpec`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Field mask is used to specify the fields to be overwritten in the SkillEncryptionSpec
+                /// resource by the update. The fields specified in the update_mask are relative to the resource, not
+                /// the full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                /// mask then all fields present in the request will be overwritten.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AgentRegistry.v1.Data.SkillEncryptionSpec Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSkillEncryptionSpec";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateSkillEncryptionSpec parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/skillEncryptionSpec$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -7160,6 +7303,107 @@ namespace Google.Apis.AgentRegistry.v1.Data
         private object _updateTime;
 
         /// <summary>Output only. Update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Once the SkillEncryptionSpec is configured, new Skill payloads are protected using the provided customer-managed
+    /// encryption key instead of a Google-managed encryption key. SkillEncryptionSpec cannot be set if any Skills have
+    /// already been created in the project and location.
+    /// </summary>
+    public class SkillEncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The Cloud KMS CryptoKey resource name used to protect Skill payloads in this project and location.
+        /// This field can be set or updated only when no Skills exist in the target project and location. Once any
+        /// Skill exists in the location, updating this field is rejected with `FAILED_PRECONDITION`. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
+        public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the SkillEncryptionSpec. Format:
+        /// `projects/{project}/locations/{location}/skillEncryptionSpec`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Most recent update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
