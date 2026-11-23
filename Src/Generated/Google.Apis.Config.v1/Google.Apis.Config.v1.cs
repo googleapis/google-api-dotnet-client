@@ -1332,7 +1332,7 @@ namespace Google.Apis.Config.v1
                         }
                     }
 
-                    /// <summary>Exports Terraform state file from a given revision.</summary>
+                    /// <summary>Exports state file from a given revision.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent in whose context the statefile is listed. The parent value is in the
@@ -1344,7 +1344,7 @@ namespace Google.Apis.Config.v1
                         return new ExportStateRequest(this.service, body, parent);
                     }
 
-                    /// <summary>Exports Terraform state file from a given revision.</summary>
+                    /// <summary>Exports state file from a given revision.</summary>
                     public class ExportStateRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Statefile>
                     {
                         /// <summary>Constructs a new ExportState request.</summary>
@@ -1774,7 +1774,7 @@ namespace Google.Apis.Config.v1
                     }
                 }
 
-                /// <summary>Deletes Terraform state file in a given deployment.</summary>
+                /// <summary>Deletes state file in a given deployment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The name of the deployment in the format:
@@ -1785,7 +1785,7 @@ namespace Google.Apis.Config.v1
                     return new DeleteStateRequest(this.service, body, name);
                 }
 
-                /// <summary>Deletes Terraform state file in a given deployment.</summary>
+                /// <summary>Deletes state file in a given deployment.</summary>
                 public class DeleteStateRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new DeleteState request.</summary>
@@ -1884,7 +1884,7 @@ namespace Google.Apis.Config.v1
                     }
                 }
 
-                /// <summary>Exports Terraform state file from a given deployment.</summary>
+                /// <summary>Exports state file from a given deployment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent in whose context the statefile is listed. The parent value is in the format:
@@ -1895,7 +1895,7 @@ namespace Google.Apis.Config.v1
                     return new ExportStateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Exports Terraform state file from a given deployment.</summary>
+                /// <summary>Exports state file from a given deployment.</summary>
                 public class ExportStateRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Statefile>
                 {
                     /// <summary>Constructs a new ExportState request.</summary>
@@ -2075,8 +2075,8 @@ namespace Google.Apis.Config.v1
                 }
 
                 /// <summary>
-                /// Imports Terraform state file in a given deployment. The state file does not take effect until the
-                /// Deployment has been unlocked.
+                /// Imports state file in a given deployment. The state file does not take effect until the Deployment
+                /// has been unlocked.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2089,8 +2089,8 @@ namespace Google.Apis.Config.v1
                 }
 
                 /// <summary>
-                /// Imports Terraform state file in a given deployment. The state file does not take effect until the
-                /// Deployment has been unlocked.
+                /// Imports state file in a given deployment. The state file does not take effect until the Deployment
+                /// has been unlocked.
                 /// </summary>
                 public class ImportStateRequest : ConfigBaseServiceRequest<Google.Apis.Config.v1.Data.Statefile>
                 {
@@ -4454,16 +4454,17 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ErrorCode { get; set; }
 
         /// <summary>
-        /// Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`.
+        /// Output only. Location of actuation engine error logs in Google Cloud Storage. Format:
+        /// `gs://{bucket}/{object}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLogs")]
         public virtual string ErrorLogs { get; set; }
 
         /// <summary>
-        /// By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource conflict
-        /// error) during actuation. If this flag is set to true, Infra Manager will instead attempt to automatically
-        /// import the resource into the Terraform state (for supported resource types) and continue actuation. Not all
-        /// resource types are supported, refer to documentation.
+        /// By default, Infra Manager will return a failure when the actuation engine encounters a 409 code (resource
+        /// conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to
+        /// automatically import the resource into the state (for supported resource types) and continue actuation. Not
+        /// all resource types are supported, refer to documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importExistingResources")]
         public virtual System.Nullable<bool> ImportExistingResources { get; set; }
@@ -4495,8 +4496,8 @@ namespace Google.Apis.Config.v1.Data
         public virtual ProviderConfig ProviderConfig { get; set; }
 
         /// <summary>
-        /// Optional. Input to control quota checks for resources in terraform configuration files. There are limited
-        /// resources on which quota validation applies.
+        /// Optional. Input to control quota checks for resources in configuration files. There are limited resources on
+        /// which quota validation applies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaValidation")]
         public virtual string QuotaValidation { get; set; }
@@ -5420,11 +5421,11 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lockId")]
         public virtual System.Nullable<long> LockId { get; set; }
 
-        /// <summary>Terraform operation, provided by the caller.</summary>
+        /// <summary>Actuation engine operation, provided by the caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; }
 
-        /// <summary>Terraform version</summary>
+        /// <summary>Actuation engine version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -5750,8 +5751,8 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ErrorCode { get; set; }
 
         /// <summary>
-        /// Output only. Link to tf-error.ndjson file, which contains the full list of the errors encountered during a
-        /// Terraform preview. Format: `gs://{bucket}/{object}`.
+        /// Output only. Link to the error log file, which contains the full list of the errors encountered during a
+        /// preview. Format: `gs://{bucket}/{object}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLogs")]
         public virtual string ErrorLogs { get; set; }
@@ -6216,16 +6217,17 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ErrorCode { get; set; }
 
         /// <summary>
-        /// Output only. Location of Terraform error logs in Google Cloud Storage. Format: `gs://{bucket}/{object}`.
+        /// Output only. Location of actuation engine error logs in Google Cloud Storage. Format:
+        /// `gs://{bucket}/{object}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLogs")]
         public virtual string ErrorLogs { get; set; }
 
         /// <summary>
-        /// Output only. By default, Infra Manager will return a failure when Terraform encounters a 409 code (resource
-        /// conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt to
-        /// automatically import the resource into the Terraform state (for supported resource types) and continue
-        /// actuation. Not all resource types are supported, refer to documentation.
+        /// Output only. By default, Infra Manager will return a failure when the actuation engine encounters a 409 code
+        /// (resource conflict error) during actuation. If this flag is set to true, Infra Manager will instead attempt
+        /// to automatically import the resource into the state (for supported resource types) and continue actuation.
+        /// Not all resource types are supported, refer to documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importExistingResources")]
         public virtual System.Nullable<bool> ImportExistingResources { get; set; }
@@ -6246,8 +6248,8 @@ namespace Google.Apis.Config.v1.Data
         public virtual ProviderConfig ProviderConfig { get; set; }
 
         /// <summary>
-        /// Optional. Input to control quota checks for resources in terraform configuration files. There are limited
-        /// resources on which quota validation applies.
+        /// Optional. Input to control quota checks for resources in configuration files. There are limited resources on
+        /// which quota validation applies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaValidation")]
         public virtual string QuotaValidation { get; set; }
@@ -6282,7 +6284,7 @@ namespace Google.Apis.Config.v1.Data
 
         /// <summary>
         /// Output only. Errors encountered when creating or updating this deployment. Errors are truncated to 10
-        /// entries, see `delete_results` and `error_logs` for full details.
+        /// entries, see `apply_results` and `error_logs` for full details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfErrors")]
         public virtual System.Collections.Generic.IList<TerraformError> TfErrors { get; set; }
@@ -6369,7 +6371,7 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains info about a Terraform state file</summary>
+    /// <summary>Contains info about a state file.</summary>
     public class Statefile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Cloud Storage signed URI used for downloading or uploading the state file.</summary>
@@ -6441,7 +6443,7 @@ namespace Google.Apis.Config.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Errors encountered during actuation using Terraform</summary>
+    /// <summary>Errors encountered during actuation using Terraform.</summary>
     public class TerraformError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Original error response from underlying Google API, if available.</summary>
