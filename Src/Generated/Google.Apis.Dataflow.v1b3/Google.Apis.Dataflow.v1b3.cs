@@ -1684,6 +1684,25 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
                 /// <summary>
+                /// Optional. Restricts the results to jobs that match this [AIP-160](https://google.aip.dev/160) filter
+                /// expression. The expression is ANDed with `filter` and the time ranges, and is limited to 4 KiB and
+                /// 32 levels of nesting. Not yet implemented: the service currently ignores this field and returns
+                /// unfiltered results. Support will be added in a future release. Supported fields are `name`, `id`,
+                /// `location`, `job_metadata.sdk_version.version`, `type`, `current_state`, `create_time` and
+                /// `current_state_time`: * String fields support `=` and `!=`, where `*` in the value matches any
+                /// sequence of characters, and `:`, which matches the same way but ignores ASCII case. `field:*`
+                /// matches any non-empty value. * `type` and `current_state` support `=`, `!=` and `:` with enum value
+                /// names, e.g. `current_state = JOB_STATE_RUNNING`. * Timestamp fields support `=`, `!=`, `&amp;lt;`,
+                /// `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=` with RFC 3339 values, e.g. `create_time &amp;gt;=
+                /// "2026-10-01T00:00:00Z"`. A job without the timestamp doesn't match any comparison on it.
+                /// Restrictions can be combined with `AND`, `OR`, `NOT` (or its equivalent, `-`) and parentheses; `AND`
+                /// and `OR` can't be mixed without parentheses. For example: `name:"wordcount-*" AND -type =
+                /// JOB_TYPE_STREAMING AND (current_state = JOB_STATE_FAILED OR current_state = JOB_STATE_CANCELLED)`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FilterExpression { get; set; }
+
+                /// <summary>
                 /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
                 /// contains this job.
                 /// </summary>
@@ -1778,11 +1797,15 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
+                /// <summary>
+                /// Deprecated. `ListJobs` always returns summaries now. Use `GetJob` for other `JobView`s.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
+                /// <summary>
+                /// Deprecated. `ListJobs` always returns summaries now. Use `GetJob` for other `JobView`s.
+                /// </summary>
                 public enum ViewEnum
                 {
                     /// <summary>
@@ -1855,6 +1878,14 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterExpression", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterExpression",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2461,6 +2492,25 @@ namespace Google.Apis.Dataflow.v1b3
                 }
 
                 /// <summary>
+                /// Optional. Restricts the results to jobs that match this [AIP-160](https://google.aip.dev/160) filter
+                /// expression. The expression is ANDed with `filter` and the time ranges, and is limited to 4 KiB and
+                /// 32 levels of nesting. Not yet implemented: the service currently ignores this field and returns
+                /// unfiltered results. Support will be added in a future release. Supported fields are `name`, `id`,
+                /// `location`, `job_metadata.sdk_version.version`, `type`, `current_state`, `create_time` and
+                /// `current_state_time`: * String fields support `=` and `!=`, where `*` in the value matches any
+                /// sequence of characters, and `:`, which matches the same way but ignores ASCII case. `field:*`
+                /// matches any non-empty value. * `type` and `current_state` support `=`, `!=` and `:` with enum value
+                /// names, e.g. `current_state = JOB_STATE_RUNNING`. * Timestamp fields support `=`, `!=`, `&amp;lt;`,
+                /// `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=` with RFC 3339 values, e.g. `create_time &amp;gt;=
+                /// "2026-10-01T00:00:00Z"`. A job without the timestamp doesn't match any comparison on it.
+                /// Restrictions can be combined with `AND`, `OR`, `NOT` (or its equivalent, `-`) and parentheses; `AND`
+                /// and `OR` can't be mixed without parentheses. For example: `name:"wordcount-*" AND -type =
+                /// JOB_TYPE_STREAMING AND (current_state = JOB_STATE_FAILED OR current_state = JOB_STATE_CANCELLED)`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FilterExpression { get; set; }
+
+                /// <summary>
                 /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
                 /// contains this job.
                 /// </summary>
@@ -2555,11 +2605,15 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
+                /// <summary>
+                /// Deprecated. `ListJobs` always returns summaries now. Use `GetJob` for other `JobView`s.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
+                /// <summary>
+                /// Deprecated. `ListJobs` always returns summaries now. Use `GetJob` for other `JobView`s.
+                /// </summary>
                 public enum ViewEnum
                 {
                     /// <summary>
@@ -2632,6 +2686,14 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filterExpression", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filterExpression",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5090,6 +5152,26 @@ namespace Google.Apis.Dataflow.v1b3
                         ACTIVE = 3,
                     }
 
+                    /// <summary>
+                    /// Optional. Restricts the results to jobs that match this [AIP-160](https://google.aip.dev/160)
+                    /// filter expression. The expression is ANDed with `filter` and the time ranges, and is limited to
+                    /// 4 KiB and 32 levels of nesting. Not yet implemented: the service currently ignores this field
+                    /// and returns unfiltered results. Support will be added in a future release. Supported fields are
+                    /// `name`, `id`, `location`, `job_metadata.sdk_version.version`, `type`, `current_state`,
+                    /// `create_time` and `current_state_time`: * String fields support `=` and `!=`, where `*` in the
+                    /// value matches any sequence of characters, and `:`, which matches the same way but ignores ASCII
+                    /// case. `field:*` matches any non-empty value. * `type` and `current_state` support `=`, `!=` and
+                    /// `:` with enum value names, e.g. `current_state = JOB_STATE_RUNNING`. * Timestamp fields support
+                    /// `=`, `!=`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=` with RFC 3339 values, e.g.
+                    /// `create_time &amp;gt;= "2026-10-01T00:00:00Z"`. A job without the timestamp doesn't match any
+                    /// comparison on it. Restrictions can be combined with `AND`, `OR`, `NOT` (or its equivalent, `-`)
+                    /// and parentheses; `AND` and `OR` can't be mixed without parentheses. For example:
+                    /// `name:"wordcount-*" AND -type = JOB_TYPE_STREAMING AND (current_state = JOB_STATE_FAILED OR
+                    /// current_state = JOB_STATE_CANCELLED)`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FilterExpression { get; set; }
+
                     /// <summary>Optional. The job name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Name { get; set; }
@@ -5179,13 +5261,13 @@ namespace Google.Apis.Dataflow.v1b3
                     }
 
                     /// <summary>
-                    /// Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.
+                    /// Deprecated. `ListJobs` always returns summaries now. Use `GetJob` for other `JobView`s.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
                     /// <summary>
-                    /// Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.
+                    /// Deprecated. `ListJobs` always returns summaries now. Use `GetJob` for other `JobView`s.
                     /// </summary>
                     public enum ViewEnum
                     {
@@ -5268,6 +5350,14 @@ namespace Google.Apis.Dataflow.v1b3
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filterExpression", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterExpression",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -8907,6 +8997,15 @@ namespace Google.Apis.Dataflow.v1b3.Data
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Indicates whether [Auto VM
+        /// Selection](https://cloud.google.com/dataflow/docs/guides/auto-vm-selection) is enabled for the job. Set to
+        /// `true` on a best-effort basis once any worker pool of the job was created with Auto VM Selection. Populated
+        /// for `ListJobs` and all `GetJob` views `SUMMARY` and higher.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoVmSelectionEnabled")]
+        public virtual System.Nullable<bool> AutoVmSelectionEnabled { get; set; }
+
+        /// <summary>
         /// The client's unique identifier of the job, re-used across retried attempts. If this field is set, the
         /// service will ensure its uniqueness. The request to create a job will fail if the service has knowledge of a
         /// previously submitted job with the same client's ID and job name. The caller may use this field to ensure
@@ -9024,7 +9123,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>
         /// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided
-        /// here. Populated for ListJobs and all GetJob views SUMMARY and higher.
+        /// here. Populated for `ListJobs` and all `GetJob` views `SUMMARY` and higher.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobMetadata")]
         public virtual JobMetadata JobMetadata { get; set; }
@@ -9061,7 +9160,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// Preliminary field: The format of this data may change at any time. A description of the user pipeline and
         /// stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with
-        /// JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
+        /// `JOB_VIEW_DESCRIPTION` or `JOB_VIEW_ALL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineDescription")]
         public virtual PipelineDescription PipelineDescription { get; set; }
@@ -9168,7 +9267,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>
         /// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire
-        /// job. Only retrieved with JOB_VIEW_ALL.
+        /// job. Only retrieved with `JOB_VIEW_ALL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
@@ -9303,7 +9402,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
     }
 
     /// <summary>
-    /// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
+    /// Metadata available primarily for filtering jobs. Will be included in the `ListJobs` response and Job `SUMMARY`
+    /// view.
     /// </summary>
     public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12028,7 +12128,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>
         /// Named properties associated with the step. Each kind of predefined step has its own required set of
-        /// properties. Must be provided on Create. Only retrieved with JOB_VIEW_ALL.
+        /// properties. Must be provided on Create. Only retrieved with `JOB_VIEW_ALL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, object> Properties { get; set; }
