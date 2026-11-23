@@ -81,6 +81,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
         private const string ImpersonatedServiceAccountCredentialFileName = "impersonated_service_account_credential.json";
         private const string ImpersonatedServiceAccountCredentialUniverseDomainFileName = "impersonated_service_account_credential_universe_domain.json";
         private const string ImpersonatedServiceAccountCredentialUniverseDomainDifferentFileName = "impersonated_service_account_credential_universe_domain_different.json";
+        private const string ImpersonatedServiceAccountCredentialSourceUniverseDomainFileName = "impersonated_service_account_credential_source_universe_domain.json";
+        private const string ImpersonatedServiceAccountCredentialOuterUniverseDomainFileName = "impersonated_service_account_credential_outer_universe_domain.json";
         private const string RecursiveImpersonatedServiceAccountCredentialFileName = "recursive_impersonated_service_account_credential.json";
         private const string ExternalAccountAuthorizedUserCredentialFileName = "external_account_authorized_user_credential.json";
 
@@ -376,6 +378,50 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var sourceGCredential = Assert.IsType<GoogleCredential>(impersonatedCredential.SourceCredential);
             var sourceSACredential = Assert.IsType<ServiceAccountCredential>(sourceGCredential.UnderlyingCredential);
             Assert.Equal("target.fake.universe.domain.com", sourceSACredential.UniverseDomain);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_ImpersonatedCredential_UniverseDomain_FromSourceCredential()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ImpersonatedServiceAccountCredentialSourceUniverseDomainFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
+            Assert.Equal("service-account-email", impersonatedCredential.TargetPrincipal);
+            Assert.False(await impersonatedCredential.HasCustomTokenUrlCache.Value);
+            Assert.Collection(impersonatedCredential.DelegateAccounts,
+                account => Assert.Equal("delegate-email-1", account),
+                account => Assert.Equal("delegate-email-2", account));
+
+            Assert.Equal("fake.universe.domain.com", credential.GetUniverseDomain());
+            Assert.Equal("fake.universe.domain.com", await credential.GetUniverseDomainAsync(default));
+
+            var sourceGCredential = Assert.IsType<GoogleCredential>(impersonatedCredential.SourceCredential);
+            var sourceSACredential = Assert.IsType<ServiceAccountCredential>(sourceGCredential.UnderlyingCredential);
+            Assert.Equal("fake.universe.domain.com", sourceSACredential.UniverseDomain);
+        }
+
+        [Fact]
+        public async Task GetDefaultCredential_ImpersonatedCredential_UniverseDomain_OuterOnly()
+        {
+            credentialProvider.SetEnvironmentVariable(CredentialEnvironmentVariable, ImpersonatedServiceAccountCredentialOuterUniverseDomainFileName);
+
+            var credential = await credentialProvider.GetDefaultCredentialAsync();
+
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
+            Assert.Equal("service-account-email", impersonatedCredential.TargetPrincipal);
+            Assert.False(await impersonatedCredential.HasCustomTokenUrlCache.Value);
+            Assert.Collection(impersonatedCredential.DelegateAccounts,
+                account => Assert.Equal("delegate-email-1", account),
+                account => Assert.Equal("delegate-email-2", account));
+
+            Assert.Equal("fake.universe.domain.com", credential.GetUniverseDomain());
+            Assert.Equal("fake.universe.domain.com", await credential.GetUniverseDomainAsync(default));
+
+            var sourceGCredential = Assert.IsType<GoogleCredential>(impersonatedCredential.SourceCredential);
+            var sourceExternalCredential = Assert.IsType<FileSourcedExternalAccountCredential>(sourceGCredential.UnderlyingCredential);
+            Assert.Equal("fake.universe.domain.com", sourceExternalCredential.UniverseDomain);
         }
 
         [Fact]

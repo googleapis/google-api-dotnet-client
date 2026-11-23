@@ -846,6 +846,102 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             Assert.Null(request.Headers.Authorization?.Parameter);
         }
 
+        public static TheoryData<string, string, string, string> ImpersonatedUniverseDomainData()
+        {
+            const string customDomain = "fake.universe.domain.com";
+            const string defaultDomain = GoogleAuthConsts.DefaultUniverseDomain;
+            const string serviceAccount = JsonCredentialParameters.ServiceAccountCredentialType;
+            const string externalAccount = JsonCredentialParameters.ExternalAccountCredentialType;
+            const string authorizedUser = JsonCredentialParameters.AuthorizedUserCredentialType;
+
+            return new TheoryData<string, string, string, string>
+            {
+                // Both inner and outer set to the same value.
+                { serviceAccount, customDomain, customDomain, customDomain },
+                { serviceAccount, defaultDomain, defaultDomain, defaultDomain },
+                { externalAccount, customDomain, customDomain, customDomain },
+                { externalAccount, defaultDomain, defaultDomain, defaultDomain },
+                { authorizedUser, defaultDomain, defaultDomain, defaultDomain },
+
+                // Only inner set (outer null, empty, or whitespace).
+                { serviceAccount, null, customDomain, customDomain },
+                { serviceAccount, "", customDomain, customDomain },
+                { serviceAccount, "   ", customDomain, customDomain },
+                { serviceAccount, null, defaultDomain, defaultDomain },
+                { externalAccount, null, customDomain, customDomain },
+                { externalAccount, "", customDomain, customDomain },
+                { externalAccount, "   ", customDomain, customDomain },
+                { externalAccount, null, defaultDomain, defaultDomain },
+                { authorizedUser, null, defaultDomain, defaultDomain },
+
+                // Only outer set.
+                { externalAccount, customDomain, null, customDomain },
+                { externalAccount, defaultDomain, null, defaultDomain },
+                { serviceAccount, defaultDomain, null, defaultDomain },
+                { authorizedUser, defaultDomain, null, defaultDomain },
+
+                // Neither set.
+                { serviceAccount, null, null, defaultDomain },
+                { externalAccount, null, null, defaultDomain },
+                { authorizedUser, null, null, defaultDomain },
+            };
+        }
+
+        [Theory]
+        [MemberData(nameof(ImpersonatedUniverseDomainData))]
+        public async Task FromJsonParameters_Impersonated_UniverseDomain(
+            string sourceType, string outerUniverseDomain, string innerUniverseDomain, string expectedUniverseDomain)
+        {
+            JsonCredentialParameters sourceParameters = sourceType switch
+            {
+                JsonCredentialParameters.ServiceAccountCredentialType => new JsonCredentialParameters
+                {
+                    Type = JsonCredentialParameters.ServiceAccountCredentialType,
+                    ClientEmail = "client@example.iam.gserviceaccount.com",
+                    PrivateKeyId = "PRIVATE_KEY_ID",
+                    PrivateKey = ServiceAccountCredentialTests.PrivateKey,
+                    UniverseDomain = innerUniverseDomain,
+                },
+                JsonCredentialParameters.ExternalAccountCredentialType => new JsonCredentialParameters
+                {
+                    Type = JsonCredentialParameters.ExternalAccountCredentialType,
+                    Audience = "//iam.googleapis.com/projects/123/locations/global/workloadIdentityPools/pool/providers/provider",
+                    SubjectTokenType = "urn:ietf:params:oauth:token-type:saml2",
+                    TokenUrl = $"https://sts.{expectedUniverseDomain}/v1/token",
+                    CredentialSourceConfig = new JsonCredentialParameters.CredentialSource
+                    {
+                        File = "/var/run/saml/assertion/token",
+                    },
+                    UniverseDomain = innerUniverseDomain,
+                },
+                JsonCredentialParameters.AuthorizedUserCredentialType => new JsonCredentialParameters
+                {
+                    Type = JsonCredentialParameters.AuthorizedUserCredentialType,
+                    ClientId = "CLIENT_ID",
+                    ClientSecret = "CLIENT_SECRET",
+                    RefreshToken = "REFRESH_TOKEN",
+                    UniverseDomain = innerUniverseDomain,
+                },
+                _ => throw new ArgumentOutOfRangeException(nameof(sourceType)),
+            };
+
+            var parameters = new JsonCredentialParameters
+            {
+                Type = JsonCredentialParameters.ImpersonatedServiceAccountCredentialType,
+                ServiceAccountImpersonationUrl = $"https://iamcredentials.{expectedUniverseDomain}/v1/projects/-/serviceAccounts/target@example.iam.gserviceaccount.com:generateAccessToken",
+                UniverseDomain = outerUniverseDomain,
+                SourceCredential = sourceParameters,
+            };
+
+            var impersonatedCredential = CredentialFactory.FromJsonParameters<ImpersonatedCredential>(parameters);
+            var credential = impersonatedCredential.ToGoogleCredential();
+
+            Assert.Equal(expectedUniverseDomain, credential.GetUniverseDomain());
+            Assert.Equal(expectedUniverseDomain, await credential.GetUniverseDomainAsync(default));
+            Assert.Equal(expectedUniverseDomain, impersonatedCredential.SourceCredential.GetUniverseDomain());
+            Assert.False(await impersonatedCredential.HasCustomTokenUrlCache.Value);
+        }
+
         [Theory]
         [MemberData(nameof(CredentialFactory_Success_Data))]
         public void FromFile_WithType(string json, string credentialType, Type expectedType)
