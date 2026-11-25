@@ -37933,6 +37933,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Observability config for a resource.</summary>
     public class GoogleCloudDiscoveryengineV1alphaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The Cloud Storage bucket that agent artifacts are written to. Artifacts are the multi-modal
+        /// content (e.g. generated images and files) that an agent produces while handling an invocation. Persisting
+        /// them makes them available for inspection alongside the observability traces and logs emitted for the same
+        /// invocation. This must be a bucket URI without an object path. Example value: `gs://my-observability-bucket`.
+        /// The bucket must be owned by the same project as the resource, and the Gemini Enterprise service agent must
+        /// be able to write to it. Otherwise an `INVALID_ARGUMENT` or `PERMISSION_DENIED` error is returned. If unset,
+        /// artifacts are only held for the duration of the invocation and are not persisted. This field has no effect
+        /// when set on a Project; setting it there returns an `INVALID_ARGUMENT` error. Configure it on an Engine or an
+        /// Agent instead. When set on both, the agent-level value takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactGcsBucket")]
+        public virtual string ArtifactGcsBucket { get; set; }
+
         /// <summary>Optional. Enables observability. If `false`, all other flags are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
         public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
@@ -37943,6 +37957,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
         public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Logs the end user's identity on activity log entries even when `sensitive_logging_enabled` is
+        /// `false`. Prompt and response content stays redacted. Has no effect when `sensitive_logging_enabled` is
+        /// `true`. Setting this field on a Project returns an `INVALID_ARGUMENT` error. Configure it on an Engine or an
+        /// Agent instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrincipalLoggingEnabled")]
+        public virtual System.Nullable<bool> UserPrincipalLoggingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52827,6 +52850,18 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Runs only the common project-level pre-provisioning steps (service agents, agent identity pools,
+        /// project-scoped extension bindings, App Hub registry, Sobi agent default identity, and Sobi default Model
+        /// Armor template) without reading or writing the Customer, Collection, or UserStore tables, CapabilityConfig,
+        /// tenant project, default engine, or trial licenses when `true`. Assumes no customer exists yet.
+        /// Customer-level or non-SOBI fields (`accept_data_use_terms`, `data_use_terms_version`, `saas_params`,
+        /// `idp_config`, and `PROVISION_INTENT_LEGACY`) are rejected with `INVALID_ARGUMENT`, and the returned
+        /// completed `Operation` has an empty response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preProvisionMode")]
+        public virtual System.Nullable<bool> PreProvisionMode { get; set; }
 
         /// <summary>
         /// Optional. The caller states whether the provisioning is for the new or the classic Gemini Enterprise

@@ -2480,6 +2480,21 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Service account email and scopes</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Service account email</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Optional. Service account scopes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for Slurm [login nodes](https://slurm.schedmd.com/quickstart_admin.html#login) in the cluster.
     /// Login nodes are Compute Engine VM instances that allow users to access the cluster over SSH.
@@ -2527,6 +2542,10 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. Service account to be used by login node instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual ServiceAccount ServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. [Startup script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux) to be run
@@ -2586,6 +2605,10 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDynamicNodeCount")]
         public virtual System.Nullable<long> MaxDynamicNodeCount { get; set; }
+
+        /// <summary>Optional. Immutable. Service account to be used by instances in the nodeset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual ServiceAccount ServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. Number of nodes to be statically created for this nodeset. The cluster will attempt to ensure that

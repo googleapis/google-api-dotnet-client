@@ -589,7 +589,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -607,7 +608,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -1328,7 +1333,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1346,7 +1352,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -2092,7 +2102,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2110,7 +2121,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -2326,7 +2341,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2344,7 +2360,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -2572,7 +2592,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -2590,7 +2611,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -3024,7 +3049,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3042,7 +3068,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -3171,7 +3201,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3189,7 +3220,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -3561,7 +3596,8 @@ namespace Google.Apis.DeploymentManager.alpha
             /// "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax.
             /// The literal value must match the entire field. For example, to filter for instances that do not end with
             /// name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields
-            /// using regular expressions.
+            /// using regular expressions. Note: For non-aggregated `list` requests, `filter` and `orderBy` cannot be
+            /// combined in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -3579,7 +3615,11 @@ namespace Google.Apis.DeploymentManager.alpha
             /// the resource name. You can also sort results in descending order based on the creation timestamp using
             /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
             /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+            /// operation is returned first. Currently, only sorting by `name` (or `name asc`) and `creationTimestamp
+            /// desc` is supported. Sorting by `name desc` or `creationTimestamp` (which defaults to ascending order) is
+            /// not supported. For `aggregatedList` requests, `orderBy` sorts resources within each individual location
+            /// (`zones/*`, `regions/*`, or `global`) rather than across all locations. For non-aggregated `list`
+            /// requests, `orderBy` cannot be combined with `filter` in the same request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -3650,6 +3690,28 @@ namespace Google.Apis.DeploymentManager.alpha
 }
 namespace Google.Apis.DeploymentManager.alpha.Data
 {
+    /// <summary>
+    /// [Output Only] Operation metadata for agentConversations.sendMessage. It holds no message content, because anyone
+    /// with compute.regionOperations.get on the project can read the operation; the reply stays in the owner-only
+    /// conversation.
+    /// </summary>
+    public class AgentConversationsSendMessageOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] Link that opens the conversation in the Google Cloud console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consoleUri")]
+        public virtual string ConsoleUri { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] URL of the conversation. Pass it as agentConversation to later sendMessage calls
+        /// to continue the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Async options that determine when a resource should finish.</summary>
     public class AsyncOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4818,6 +4880,10 @@ namespace Google.Apis.DeploymentManager.alpha.Data
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. [Output Only] Operation metadata for agentConversations.sendMessage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentConversationsSendMessageOperationMetadata")]
+        public virtual AgentConversationsSendMessageOperationMetadata AgentConversationsSendMessageOperationMetadata { get; set; }
+
         /// <summary>
         /// [Output Only] The value of `requestId` if you provided it in the request. Not present otherwise.
         /// </summary>

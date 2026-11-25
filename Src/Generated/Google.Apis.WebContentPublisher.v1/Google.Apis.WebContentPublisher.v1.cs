@@ -1075,6 +1075,14 @@ namespace Google.Apis.WebContentPublisher.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>
+            /// Required. The canonical `https://` URL of the article being accessed, matching the `` element on the
+            /// rendered page. When calling the REST `GET` endpoint directly without a client library, callers must
+            /// percent-encode the `canonicalUrl` query parameter; the service URL-decodes it automatically.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("canonicalUrl", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CanonicalUrl { get; set; }
+
             /// <summary>Required. The specific product ID being accessed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProductId { get; set; }
@@ -1103,6 +1111,14 @@ namespace Google.Apis.WebContentPublisher.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^publications/[^/]+$",
+                });
+                RequestParameters.Add("canonicalUrl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "canonicalUrl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
                 {

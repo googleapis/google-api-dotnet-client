@@ -1806,51 +1806,48 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
 
                     /// <summary>ServeMcpDeleteRequest serves a MCP DELETE request.</summary>
-                    /// <param name="projectsId"><c>null</c></param>
-                    /// <param name="locationsId"><c>null</c></param>
-                    /// <param name="collectionsId"><c>null</c></param>
-                    public virtual McpRequest Mcp(string projectsId, string locationsId, string collectionsId)
+                    /// <param name="name">
+                    /// Required. The DataConnector the MCP request is for. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataConnector`
+                    /// </param>
+                    public virtual McpRequest Mcp(string name)
                     {
-                        return new McpRequest(this.service, projectsId, locationsId, collectionsId);
+                        return new McpRequest(this.service, name);
                     }
 
                     /// <summary>ServeMcpDeleteRequest serves a MCP DELETE request.</summary>
                     public class McpRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleApiHttpBody>
                     {
                         /// <summary>Constructs a new Mcp request.</summary>
-                        public McpRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string collectionsId) : base(service)
+                        public McpRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
-                            ProjectsId = projectsId;
-                            LocationsId = locationsId;
-                            CollectionsId = collectionsId;
+                            Name = name;
                             InitParameters();
                         }
 
-                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectsId { get; private set; }
-
-                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string LocationsId { get; private set; }
-
-                        [Google.Apis.Util.RequestParameterAttribute("collectionsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string CollectionsId { get; private set; }
+                        /// <summary>
+                        /// Required. The DataConnector the MCP request is for. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataConnector`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
 
                         /// <summary>
                         /// The HTTP Content-Type header value specifying the content type of the body.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ContentType { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("httpBody.contentType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string HttpBodyContentType { get; set; }
 
                         /// <summary>The HTTP request/response body as raw binary.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("data", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Data { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("httpBody.data", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string HttpBodyData { get; set; }
 
                         /// <summary>
                         /// Application specific response metadata. Must be set in the first response for streaming
                         /// APIs.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("extensions", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Collections.Generic.IDictionary<string, object> Extensions { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("httpBody.extensions", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Collections.Generic.IDictionary<string, object> HttpBodyExtensions { get; set; }
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "mcp";
@@ -1859,55 +1856,39 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public override string HttpMethod => "DELETE";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector/mcp";
+                        public override string RestPath => "v1alpha/{+name}/mcp";
 
                         /// <summary>Initializes Mcp parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "projectsId",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
                             });
-                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("httpBody.contentType", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "locationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("collectionsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "collectionsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("contentType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "contentType",
+                                Name = "httpBody.contentType",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                            RequestParameters.Add("data", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("httpBody.data", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "data",
+                                Name = "httpBody.data",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                            RequestParameters.Add("extensions", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("httpBody.extensions", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "extensions",
+                                Name = "httpBody.extensions",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -11104,6 +11085,81 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     });
                                 }
                             }
+
+                            /// <summary>
+                            /// Transfers ownership of an Agent to a new owner. The new owner becomes the agent's only
+                            /// owner. The previous owner loses access unless `previous_owner_disposition` keeps them as
+                            /// a user. The previous owner's schedules and event triggers on the agent are disabled
+                            /// (their configuration stays on the agent), and the new owner is notified. Requires the
+                            /// `discoveryengine.agents.manage` permission on the agent. Private agents cannot be
+                            /// transferred. A failed call can be retried with the same request; the retry completes the
+                            /// transfer.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Required. The name of the Agent whose ownership is being transferred. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                            /// </param>
+                            public virtual TransferAgentOwnerRequest TransferAgentOwner(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequest body, string name)
+                            {
+                                return new TransferAgentOwnerRequest(this.service, body, name);
+                            }
+
+                            /// <summary>
+                            /// Transfers ownership of an Agent to a new owner. The new owner becomes the agent's only
+                            /// owner. The previous owner loses access unless `previous_owner_disposition` keeps them as
+                            /// a user. The previous owner's schedules and event triggers on the agent are disabled
+                            /// (their configuration stays on the agent), and the new owner is notified. Requires the
+                            /// `discoveryengine.agents.manage` permission on the agent. Private agents cannot be
+                            /// transferred. A failed call can be retried with the same request; the retry completes the
+                            /// transfer.
+                            /// </summary>
+                            public class TransferAgentOwnerRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerResponse>
+                            {
+                                /// <summary>Constructs a new TransferAgentOwner request.</summary>
+                                public TransferAgentOwnerRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequest body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the Agent whose ownership is being transferred. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "transferAgentOwner";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:transferAgentOwner";
+
+                                /// <summary>Initializes TransferAgentOwner parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+$",
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Gets the CannedQueries resource.</summary>
@@ -15365,6 +15421,76 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Validates an A2A 3-legged-OAuth (3LO) downstream-auth consent flow after the user returns
+                        /// from the third-party consent screen, and finalizes the downstream credential with Auth
+                        /// Manager.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="session">
+                        /// Required. The resource name of the assist Session that initiated the consent flow. Used
+                        /// together with `downstream_connector` to recover the server-stored `consent_nonce`. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+                        /// </param>
+                        public virtual ValidateUserAuthorizationRequest ValidateUserAuthorization(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaValidateUserAuthorizationRequest body, string session)
+                        {
+                            return new ValidateUserAuthorizationRequest(this.service, body, session);
+                        }
+
+                        /// <summary>
+                        /// Validates an A2A 3-legged-OAuth (3LO) downstream-auth consent flow after the user returns
+                        /// from the third-party consent screen, and finalizes the downstream credential with Auth
+                        /// Manager.
+                        /// </summary>
+                        public class ValidateUserAuthorizationRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaValidateUserAuthorizationResponse>
+                        {
+                            /// <summary>Constructs a new ValidateUserAuthorization request.</summary>
+                            public ValidateUserAuthorizationRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaValidateUserAuthorizationRequest body, string session) : base(service)
+                            {
+                                Session = session;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the assist Session that initiated the consent flow. Used
+                            /// together with `downstream_connector` to recover the server-stored `consent_nonce`.
+                            /// Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Session { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaValidateUserAuthorizationRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "validateUserAuthorization";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+session}:validateUserAuthorization";
+
+                            /// <summary>Initializes ValidateUserAuthorization parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "session",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
                                 });
                             }
                         }
@@ -28476,8 +28602,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     this.service = service;
                     LicenseConfigsUsageStats = new LicenseConfigsUsageStatsResource(service);
                     Operations = new OperationsResource(service);
-                    UserAvailabilities = new UserAvailabilitiesResource(service);
-                    UserAvailability = new UserAvailabilityResource(service);
                     UserLicenses = new UserLicensesResource(service);
                 }
 
@@ -28720,259 +28844,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the UserAvailabilities resource.</summary>
-                public virtual UserAvailabilitiesResource UserAvailabilities { get; }
-
-                /// <summary>The "userAvailabilities" collection of methods.</summary>
-                public class UserAvailabilitiesResource
-                {
-                    private const string Resource = "userAvailabilities";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public UserAvailabilitiesResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Updates multiple UserAvailabilitys.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. The parent UserStore resource name, format:
-                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-                    /// </param>
-                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest body, string parent)
-                    {
-                        return new BatchUpdateRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>Updates multiple UserAvailabilitys.</summary>
-                    public class BatchUpdateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesResponse>
-                    {
-                        /// <summary>Constructs a new BatchUpdate request.</summary>
-                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent UserStore resource name, format:
-                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "batchUpdate";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/userAvailabilities:batchUpdate";
-
-                        /// <summary>Initializes BatchUpdate parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Lists the UserAvailabilitys.</summary>
-                    /// <param name="parent">
-                    /// Required. The parent UserStore resource name, format:
-                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(this.service, parent);
-                    }
-
-                    /// <summary>Lists the UserAvailabilitys.</summary>
-                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListUserAvailabilitiesResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent UserStore resource name, format:
-                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Optional. Filter for the list request. Supported fields (only `user_principal` is supported
-                        /// for now): * `user_principal` (will be normalized for matching) Examples: * `user_principal =
-                        /// "user1@example.com"` to list user availability for `user1@example.com`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>
-                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// defaults to 100. The maximum value is 1000; values above 1000 will be coerced to 1000. If
-                        /// this field is negative, an INVALID_ARGUMENT error is returned.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// Optional. A page token, received from a previous `ListUserAvailabilities` call. Provide this
-                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListUserAvailabilities` must match the call that provided the page token.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/userAvailabilities";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
-                            });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the UserAvailability resource.</summary>
-                public virtual UserAvailabilityResource UserAvailability { get; }
-
-                /// <summary>The "userAvailability" collection of methods.</summary>
-                public class UserAvailabilityResource
-                {
-                    private const string Resource = "userAvailability";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public UserAvailabilityResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Updates a UserAvailability.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Optional. The parent UserStore resource name, format:
-                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-                    /// </param>
-                    public virtual UpdateRequest Update(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest body, string parent)
-                    {
-                        return new UpdateRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>Updates a UserAvailability.</summary>
-                    public class UpdateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserAvailability>
-                    {
-                        /// <summary>Constructs a new Update request.</summary>
-                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Optional. The parent UserStore resource name, format:
-                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "update";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/userAvailability:update";
-
-                        /// <summary>Initializes Update parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
                             });
                         }
                     }
@@ -43032,33 +42903,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for UserStoreService.BatchUpdateUserAvailabilities method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The UserAvailabilitys to update. Maximum of 1000 at a time: if more are passed in, returns
-        /// INVALID_ARGUMENT. Batch is all or nothing; either all updates succeed or none. The `parent` field in each
-        /// child request must either be empty, or match the `parent` field in the batch request. If there is a
-        /// mismatch, that will also result in an INVALID_ARGUMENT being returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for UserStoreService.BatchUpdateUserAvailabilities method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The updated UserAvailabilitys.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userAvailabilities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUserAvailability> UserAvailabilities { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the UserLicenseService.BatchUpdateUserLicenses operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -52927,24 +52771,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for UserStoreService.ListUserAvailabilities method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaListUserAvailabilitiesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The UserAvailabilitys matching the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userAvailabilities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUserAvailability> UserAvailabilities { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for UserLicenseService.ListUserLicenses.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListUserLicensesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -53031,6 +52857,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Observability config for a resource.</summary>
     public class GoogleCloudDiscoveryengineV1alphaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The Cloud Storage bucket that agent artifacts are written to. Artifacts are the multi-modal
+        /// content (e.g. generated images and files) that an agent produces while handling an invocation. Persisting
+        /// them makes them available for inspection alongside the observability traces and logs emitted for the same
+        /// invocation. This must be a bucket URI without an object path. Example value: `gs://my-observability-bucket`.
+        /// The bucket must be owned by the same project as the resource, and the Gemini Enterprise service agent must
+        /// be able to write to it. Otherwise an `INVALID_ARGUMENT` or `PERMISSION_DENIED` error is returned. If unset,
+        /// artifacts are only held for the duration of the invocation and are not persisted. This field has no effect
+        /// when set on a Project; setting it there returns an `INVALID_ARGUMENT` error. Configure it on an Engine or an
+        /// Agent instead. When set on both, the agent-level value takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactGcsBucket")]
+        public virtual string ArtifactGcsBucket { get; set; }
+
         /// <summary>Optional. Enables observability. If `false`, all other flags are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
         public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
@@ -53041,6 +52881,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
         public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Logs the end user's identity on activity log entries even when `sensitive_logging_enabled` is
+        /// `false`. Prompt and response content stays redacted. Has no effect when `sensitive_logging_enabled` is
+        /// `true`. Setting this field on a Project returns an `INVALID_ARGUMENT` error. Configure it on an Engine or an
+        /// Agent instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrincipalLoggingEnabled")]
+        public virtual System.Nullable<bool> UserPrincipalLoggingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54072,6 +53921,18 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Runs only the common project-level pre-provisioning steps (service agents, agent identity pools,
+        /// project-scoped extension bindings, App Hub registry, Sobi agent default identity, and Sobi default Model
+        /// Armor template) without reading or writing the Customer, Collection, or UserStore tables, CapabilityConfig,
+        /// tenant project, default engine, or trial licenses when `true`. Assumes no customer exists yet.
+        /// Customer-level or non-SOBI fields (`accept_data_use_terms`, `data_use_terms_version`, `saas_params`,
+        /// `idp_config`, and `PROVISION_INTENT_LEGACY`) are rejected with `INVALID_ARGUMENT`, and the returned
+        /// completed `Operation` has an empty response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preProvisionMode")]
+        public virtual System.Nullable<bool> PreProvisionMode { get; set; }
 
         /// <summary>
         /// Optional. The caller states whether the provisioning is for the new or the classic Gemini Enterprise
@@ -60216,6 +60077,60 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the AgentService.TransferAgentOwner method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Transfers ownership to the caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentUser")]
+        public virtual GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequestTransferToCurrentUser CurrentUser { get; set; }
+
+        /// <summary>
+        /// Optional. What happens to the previous owner after the transfer. If unspecified, the previous owner is
+        /// removed and loses access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousOwnerDisposition")]
+        public virtual string PreviousOwnerDisposition { get; set; }
+
+        /// <summary>Optional. Transfers ownership to a specific principal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPrincipal")]
+        public virtual GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequestTransferToTargetPrincipal TargetPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Transfers ownership to the caller. The caller must be an individual user, not a service account.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequestTransferToCurrentUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Transfers ownership to a specific user.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerRequestTransferToTargetPrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The new owner, as an IAM member string. Use `user:` for Google identities (e.g.
+        /// `user:alice@example.com`); use `principal://` for workforce identity federation principals. The new owner
+        /// must be an individual user who has signed in to the app and has a license that allows creating agents.
+        /// Groups and service accounts are not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the AgentService.TransferAgentOwner method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTransferAgentOwnerResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a tune operation.</summary>
     public class GoogleCloudDiscoveryengineV1alphaTuneEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60593,131 +60508,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request message for UserStoreService.UpdateUserAvailability method. Also nested within
-    /// BatchUpdateUserAvailabilityRequest for the UserStoreService.BatchUpdateUserAvailability method. `parent` is a
-    /// required field when this message is used for a single Update, but is optional when used for a BatchUpdate.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The parent UserStore resource name, format:
-        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>
-        /// Optional. The list of fields to update. Only 'state' is supported; if unset, defaults to 'state'.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
-
-        /// <summary>Required. The UserAvailability to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userAvailability")]
-        public virtual GoogleCloudDiscoveryengineV1alphaUserAvailability UserAvailability { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Tracks whether a resource is available for a given user (distinct from whether the user is allowed to use that
-    /// resource by licensing, etc).
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaUserAvailability : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _observeTimeRaw;
-
-        private object _observeTime;
-
-        /// <summary>Optional. Deprecated: use `update_time` only.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("observeTime")]
-        public virtual string ObserveTimeRaw
-        {
-            get => _observeTimeRaw;
-            set
-            {
-                _observeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _observeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ObserveTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ObserveTimeDateTimeOffset instead.")]
-        public virtual object ObserveTime
-        {
-            get => _observeTime;
-            set
-            {
-                _observeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _observeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ObserveTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ObserveTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ObserveTimeRaw);
-            set => ObserveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Optional. Whether the user can currently use the resource. Set by the caller on update. If unspecified,
-        /// defaults to `ACTIVE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. Timestamp when the most recent update to `state` was saved.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Required. Immutable. User principal (IdP subject for Workforce Identity, email for Google sign-in).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userPrincipal")]
-        public virtual string UserPrincipal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61207,6 +60997,35 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the AuthorizationService.ValidateUserAuthorization method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaValidateUserAuthorizationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The downstream connector (auth provider) resource name from the consent redirect
+        /// (`auth_provider_name`). Named `downstream_connector` to disambiguate from the "connector" in the remote
+        /// agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downstreamConnector")]
+        public virtual string DownstreamConnector { get; set; }
+
+        /// <summary>
+        /// Required. The opaque, encrypted validation state returned by Auth Manager in the consent redirect. Forwarded
+        /// verbatim to FinalizeCredentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIdValidationState")]
+        public virtual string UserIdValidationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the AuthorizationService.ValidateUserAuthorization method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaValidateUserAuthorizationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
