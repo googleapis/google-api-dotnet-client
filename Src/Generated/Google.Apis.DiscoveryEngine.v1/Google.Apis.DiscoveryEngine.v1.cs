@@ -990,51 +990,48 @@ namespace Google.Apis.DiscoveryEngine.v1
                     }
 
                     /// <summary>ServeMcpDeleteRequest serves a MCP DELETE request.</summary>
-                    /// <param name="projectsId"><c>null</c></param>
-                    /// <param name="locationsId"><c>null</c></param>
-                    /// <param name="collectionsId"><c>null</c></param>
-                    public virtual McpRequest Mcp(string projectsId, string locationsId, string collectionsId)
+                    /// <param name="name">
+                    /// Required. The DataConnector the MCP request is for. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataConnector`
+                    /// </param>
+                    public virtual McpRequest Mcp(string name)
                     {
-                        return new McpRequest(this.service, projectsId, locationsId, collectionsId);
+                        return new McpRequest(this.service, name);
                     }
 
                     /// <summary>ServeMcpDeleteRequest serves a MCP DELETE request.</summary>
                     public class McpRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleApiHttpBody>
                     {
                         /// <summary>Constructs a new Mcp request.</summary>
-                        public McpRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string collectionsId) : base(service)
+                        public McpRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                         {
-                            ProjectsId = projectsId;
-                            LocationsId = locationsId;
-                            CollectionsId = collectionsId;
+                            Name = name;
                             InitParameters();
                         }
 
-                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectsId { get; private set; }
-
-                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string LocationsId { get; private set; }
-
-                        [Google.Apis.Util.RequestParameterAttribute("collectionsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string CollectionsId { get; private set; }
+                        /// <summary>
+                        /// Required. The DataConnector the MCP request is for. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataConnector`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
 
                         /// <summary>
                         /// The HTTP Content-Type header value specifying the content type of the body.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("contentType", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ContentType { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("httpBody.contentType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string HttpBodyContentType { get; set; }
 
                         /// <summary>The HTTP request/response body as raw binary.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("data", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Data { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("httpBody.data", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string HttpBodyData { get; set; }
 
                         /// <summary>
                         /// Application specific response metadata. Must be set in the first response for streaming
                         /// APIs.
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("extensions", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Collections.Generic.IDictionary<string, object> Extensions { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("httpBody.extensions", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Collections.Generic.IDictionary<string, object> HttpBodyExtensions { get; set; }
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "mcp";
@@ -1043,55 +1040,39 @@ namespace Google.Apis.DiscoveryEngine.v1
                         public override string HttpMethod => "DELETE";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector/mcp";
+                        public override string RestPath => "v1/{+name}/mcp";
 
                         /// <summary>Initializes Mcp parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "projectsId",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
                             });
-                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("httpBody.contentType", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "locationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("collectionsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "collectionsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("contentType", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "contentType",
+                                Name = "httpBody.contentType",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                            RequestParameters.Add("data", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("httpBody.data", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "data",
+                                Name = "httpBody.data",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                            RequestParameters.Add("extensions", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("httpBody.extensions", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "extensions",
+                                Name = "httpBody.extensions",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -34452,6 +34433,18 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1IdpConfig IdpConfig { get; set; }
 
         /// <summary>
+        /// Optional. Runs only the common project-level pre-provisioning steps (service agents, agent identity pools,
+        /// project-scoped extension bindings, App Hub registry, Sobi agent default identity, and Sobi default Model
+        /// Armor template) without reading or writing the Customer, Collection, or UserStore tables, CapabilityConfig,
+        /// tenant project, default engine, or trial licenses when `true`. Assumes no customer exists yet.
+        /// Customer-level or non-SOBI fields (`accept_data_use_terms`, `data_use_terms_version`, `saas_params`,
+        /// `idp_config`, and `PROVISION_INTENT_LEGACY`) are rejected with `INVALID_ARGUMENT`, and the returned
+        /// completed `Operation` has an empty response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preProvisionMode")]
+        public virtual System.Nullable<bool> PreProvisionMode { get; set; }
+
+        /// <summary>
         /// Optional. The caller states whether the provisioning is for the new or the classic Gemini Enterprise
         /// experience.
         /// </summary>
@@ -48294,6 +48287,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Observability config for a resource.</summary>
     public class GoogleCloudDiscoveryengineV1alphaObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The Cloud Storage bucket that agent artifacts are written to. Artifacts are the multi-modal
+        /// content (e.g. generated images and files) that an agent produces while handling an invocation. Persisting
+        /// them makes them available for inspection alongside the observability traces and logs emitted for the same
+        /// invocation. This must be a bucket URI without an object path. Example value: `gs://my-observability-bucket`.
+        /// The bucket must be owned by the same project as the resource, and the Gemini Enterprise service agent must
+        /// be able to write to it. Otherwise an `INVALID_ARGUMENT` or `PERMISSION_DENIED` error is returned. If unset,
+        /// artifacts are only held for the duration of the invocation and are not persisted. This field has no effect
+        /// when set on a Project; setting it there returns an `INVALID_ARGUMENT` error. Configure it on an Engine or an
+        /// Agent instead. When set on both, the agent-level value takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactGcsBucket")]
+        public virtual string ArtifactGcsBucket { get; set; }
+
         /// <summary>Optional. Enables observability. If `false`, all other flags are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityEnabled")]
         public virtual System.Nullable<bool> ObservabilityEnabled { get; set; }
@@ -48304,6 +48311,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveLoggingEnabled")]
         public virtual System.Nullable<bool> SensitiveLoggingEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Logs the end user's identity on activity log entries even when `sensitive_logging_enabled` is
+        /// `false`. Prompt and response content stays redacted. Has no effect when `sensitive_logging_enabled` is
+        /// `true`. Setting this field on a Project returns an `INVALID_ARGUMENT` error. Configure it on an Engine or an
+        /// Agent instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrincipalLoggingEnabled")]
+        public virtual System.Nullable<bool> UserPrincipalLoggingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
